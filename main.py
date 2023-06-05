@@ -3,16 +3,15 @@ import json
 
 def convert_date(date):
     '''
-
+    
     :param date:
     :return:
-
     example 2018-06-30T02:08:58. -> 30.06.2018    '''
 
     return '.'.join(date[:10].split('-')[::-1])
 
 def masking_card(card_info:str):
-    if card_info.startswith('Visa Classic') or card_info.startswith('Maestro'):
+    if card_info.startswith('Visa Classic') or card_info.startswith('Maestro') or card_info.startswith('Visa Platinum'):
         card_info = card_info.split()
         number = card_info[-1]
         hide_number = number[:6] + '*' * 2 + number[-4:]
@@ -43,5 +42,9 @@ def main():
 
     for operation in data[:5]:
         show_operation(operation)
+
+
+# if __main__ == '__main__':
+#     main()
 
 main()
